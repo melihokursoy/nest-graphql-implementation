@@ -8,6 +8,16 @@ type Author {
   lastName: String
 }
 
+type Mutation {
+  addAuthor(newAuthorData: NewAuthorInput!): Author!
+}
+
+input NewAuthorInput {
+  firstName: String
+  id: String
+  lastName: String
+}
+
 type Query {
   getAllAuthors: [Author!]!
   getAuthorById(id: String!): Author!
