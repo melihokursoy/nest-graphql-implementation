@@ -16,7 +16,9 @@ import {AuthorsModule} from "./author/authors.module";
             sortSchema: true,
             playground: false,
             plugins: [ApolloServerPluginLandingPageLocalDefault()],
-        }),
+            subscriptions: {
+                'graphql-ws': true
+            },        }),
     ],
 })
 export class AppModule {}

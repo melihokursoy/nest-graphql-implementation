@@ -22,3 +22,7 @@ type Query {
   getAllAuthors: [Author!]!
   getAuthorById(id: String!): Author!
 }
+
+type Subscription {
+  authorAdded: Author!
+}
