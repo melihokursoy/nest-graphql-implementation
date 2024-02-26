@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Author } from '@prisma/client';
 import { PrismaService } from 'nestjs-prisma';
 import {NewAuthorInput} from "./dto/new-author.input";
+import {GetAuthorsArgs} from "./dto/get-authors.args";
 
 @Injectable()
 export class AuthorsService {
@@ -15,8 +16,8 @@ export class AuthorsService {
         });
     }
 
-    async findAll(): Promise<Author[]> {
-        return this.prisma.author.findMany();
+    async findMany(args: GetAuthorsArgs): Promise<Author[]> {
+        return this.prisma.author.findMany(args);
     }
 
     async create(data:NewAuthorInput): Promise<Author> {

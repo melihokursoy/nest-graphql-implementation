@@ -1,8 +1,9 @@
-import {Resolver, Query, Args, Mutation, Subscription} from '@nestjs/graphql';
+import {Resolver, Query, Args, Mutation, Subscription, Info} from '@nestjs/graphql';
 import { AuthorsService } from './authors.service';
 import { Author } from "./models/author.model";
 import {NewAuthorInput} from "./dto/new-author.input";
 import { PubSub } from "graphql-subscriptions";
+import {GetAuthorsArgs} from "./dto/get-authors.args";
 
 
 const pubSub = new PubSub();
@@ -19,8 +20,8 @@ export class AuthorsResolver {
     }
 
     @Query(returns => [Author])
-    async getAllAuthors() {
-        return this.authorsService.findAll();
+    async getAllAuthors(@Args() args: GetAuthorsArgs ) {
+        return this.authorsService.findMany(args);
     }
 
     @Query(returns => Author)

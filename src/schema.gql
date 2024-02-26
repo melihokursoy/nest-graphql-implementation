@@ -19,7 +19,7 @@ input NewAuthorInput {
 }
 
 type Query {
-  getAllAuthors: [Author!]!
+  getAllAuthors(skip: Int! = 0, take: Int! = 25): [Author!]!
   getAuthorById(id: String!): Author!
 }
 
